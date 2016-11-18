@@ -12,6 +12,7 @@ if ($_SESSION["user"] == NULL){
 		if ($database->has("users",["Name" => $_GET["user"]])==false){
 			$_SESSION["user"] = $_GET["user"];
 			$_SESSION["poeng"] = 0;
+			$_SESSION["hint"] = array();
 			$database->insert('users',[
 				"Name" => $_SESSION["user"],
 				"task" => 1,
