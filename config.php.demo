@@ -11,8 +11,8 @@ $database = new medoo([
     'database_type' => 'mysql',
     'database_name' => 'ARG',
     'server' => 'localhost',
-    'username' => 'root',
-    'password' => 'Apollo14',
+    'username' => 'user',
+    'password' => 'password',
     'charset' => 'utf8'
 ]);
 
