@@ -75,6 +75,7 @@ else{
 	loadpage("userform");
 
 }
+if($_GET["debug"] == "restart"){session_destroy();}
 //DEBUG//
 //var_dump($_SESSION);
 //session_destroy();
