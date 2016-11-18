@@ -76,6 +76,7 @@ else{
 
 }
 if($_GET["debug"] == "restart"){session_destroy();}
+if($_GET["debug"] == "session"){var_dump($_SESSION);}
 //DEBUG//
 //var_dump($_SESSION);
 //session_destroy();
