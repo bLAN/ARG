@@ -49,7 +49,7 @@ if(isset($_GET["svar"])){
 	$svar = $_GET["svar"];
 	$check = taskcheck($id,$svar);
 	$poeng = taskreward($id);
-	if($id < $config["tasks"]){
+	if($id <= $config["tasks"]){
 		if($check == TRUE){
 			$hint = $_SESSION["hint"][$_SESSION["task"]];
 			$_SESSION["task"]++;
@@ -65,7 +65,8 @@ if(isset($_GET["svar"])){
 	else{
 		$error = "FERDIG!";
 		if($database->has("finish",["user" => $_SESSION["user"]]) == false){
-			$_SESSION["poeng"] = $_SESSION["poeng"] + $poeng;
+			$hint = $_SESSION["hint"][$_SESSION["task"]];
+			$_SESSION["poeng"] = pointcalc($_SESSION["poeng"], $poeng, $config["hint"], $hint);
 			$time = time();
 			$database->insert("finish",[
 				"user" => $_SESSION["user"],
@@ -79,7 +80,7 @@ if(isset($_GET["svar"])){
 
 if(isset($_SESSION['user'])){
 	loadheader($_SESSION["user"],$_SESSION["poeng"]);
-	loadprogress($_SESSION["task"], ($config["tasks"]) - 1);
+	loadprogress($_SESSION["task"], ($config["tasks"]) + 1);
 	if($id < $config["tasks"]){
 		if(isset($_SESSION['task'])){
 
@@ -102,7 +103,7 @@ else{
 if($_GET["debug"] == "restart"){session_destroy();}
 if($_GET["debug"] == "session"){var_dump($_SESSION);}
 //DEBUG//
-//var_dump($_SESSION);
+var_dump($_SESSION);
 //session_destroy();
 //echo "<a href=\"?debug=restart\">restart</a>";
 ?>
