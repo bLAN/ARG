@@ -58,8 +58,9 @@ function loadpanel($type,$head,$content){
 }
 function loadalert($type,$head){
 	print "<div class=\"alert alert-".$type."\">" ;
-	print "<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>";
+	print "<span class=\"glyphicon glyphicon-exclamation-sign pull-left\" aria-hidden=\"true\"></span>";
 	print $head;
+	print "<span class=\"glyphicon glyphicon-exclamation-sign pull-right\" aria-hidden=\"true\"></span>";
 	print "</div>";
 }
 
@@ -128,7 +129,7 @@ echo "<div class=\"jumbotron\">";
 echo "<h1>Oppgave ".$id."</h1>";
 echo "<h2>".$task."</h2>";
 if(isset($error)){
-	loaalertt("danger",$error,"");
+	loadalert("danger",$error);
 }
 
 if($_SESSION["hint"][$id] == 1){

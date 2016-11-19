@@ -13,7 +13,9 @@ $userform = <<<END
 <div class="form-group">
 <label class="col-md-4 control-label" for="send"></label>
 <div class="col-md-4">
-<button class="btn btn-primary">GO!!</button>
+<button class="btn btn-primary">
+<span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>
+GO!!</button>
 </div>
 </div>
 </fieldset>
@@ -27,7 +29,10 @@ $taskform = <<<END
 <fieldset>
 <div class="form-group">
 <input id="svar" name="svar" type="text" placeholder="svar" class="col-md-8 form-control input-md" required="">
-<button id="" name="" class="btn btn-success pull-right col-md-4">send</button>
+<button id="" name="" class="btn btn-success pull-right col-md-4">
+<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+send
+</button>
 </div>
 </fieldset>
 </form>
@@ -38,7 +43,10 @@ $hintform = <<<END
 <fieldset>
 <!-- Button -->
 <div class="form-group">
-<button id="hint" name="hint" value="1" class="btn btn-danger pull-right col-md-4">Hint</button
+<button id="hint" name="hint" value="1" class="btn btn-danger pull-right col-md-4">
+<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+Hint
+</button
 </div>
 </fieldset>
 </form>
