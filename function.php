@@ -57,13 +57,15 @@ function loadpanel($type,$head,$content){
 }
 function loadtask($id,$error){
 	include("task.php");
-	taskhead($id, $task[$id]["task"],$task[$id]["hint"],$error);
-	loadpage("taskform");
-	if($_SESSION["hint"][$id] != 1){
-		loadpage("hintform");
+	if($task[$id]["type"] == "text"){
+		taskheadtext($id, $task[$id]["task"],$task[$id]["hint"],$error);
+		loadpage("taskform");
+		if($_SESSION["hint"][$id] != 1){
+			loadpage("hintform");
+		}
 	}
 }
-function taskhead($id,$task,$hint,$error){
+function taskheadtext($id,$task,$hint,$error){
 	echo "<div class=\"jumbotron\">";
 	echo "<h1>Oppgave ".$id."</h1>";
 	echo "<h2>".$task."</h2>";
@@ -93,7 +95,8 @@ function taskreward($id){
 }
 
 function pointcalc($poeng,$value,$config,$hint){
-	if($hint = 1){
+	print $hint;
+	if($hint == 1){
 	$r = $poeng + ($value/$config);
 	}
 	else{
