@@ -14,14 +14,16 @@ function pagedecode($p) {
 	return $p;
 	}
 }
-function loadheader(){
+function loadheader($user, $poeng){
+	include("config.php");
 	echo "<div class=\"header clearfix\">";
-	echo "<ul class=\"nav nav-pills pull-right\">";
-	echo "<li role=\"presentation\"><p>Home</p></li>";
-	echo "<li role=\"presentation\"><p>Home</p></li>";
-	echo "<li role=\"presentation\"><p>Home</p></li>";
-	echo "</ul>";
-	echo "<h3 class=\"text-muted\">  Erviker ARG</h3>";
+	echo "<div class=\"nav nav-pills pull-right\">";
+	if($user){
+	echo "<p>Bruker:".$user." </p>";
+	echo "<p>Poeng:".$poeng." </p>";
+	}
+	echo "</div>";
+	echo "<h3 class=\"text-muted\">".$config["name"]."</h3>";
 	echo "</div>";
 }
 
@@ -96,7 +98,7 @@ function pointcalc($poeng,$value,$config,$hint){
 	}
 	else{
 		$r = $poeng + $value;
-	}	
+	}
 	return $r;
 
 }

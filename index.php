@@ -1,22 +1,26 @@
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href="bootstrap/css/jumbotron-narrow.css">
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
-</head>
-<body>
-<div class="container">
 <?php
 session_start();
 include("function.php");
-
 require_once 'medoo.php';
 include 'config.php';
-loadheader();
+?>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="bootstrap/css/jumbotron-narrow.css">
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<script src="bootstrap/js/bootstrap.js"></script>
+		<title><?php echo $config["name"];?></title>
+		
+	</head>
+	<body>
+		<div class="container">
+<?php
+
 
 
 if ($_SESSION["user"] == NULL){
@@ -69,7 +73,7 @@ if(isset($_GET["svar"])){
 			$database->insert("finish",[
 				"user" => $_SESSION["user"],
 				"time" => $time,
-//				"poeng" => $_SESSION["poeng"]
+				//				"poeng" => $_SESSION["poeng"]
 			]);
 		}
 	}
@@ -77,22 +81,23 @@ if(isset($_GET["svar"])){
 
 
 if(isset($_SESSION['user'])){
+	loadheader($_SESSION["user"],$_SESSION["poeng"]);
 	if($id < $config["tasks"]){
-	if(isset($_SESSION['task'])){
+		if(isset($_SESSION['task'])){
 
-		loadtask($_SESSION['task'],$error);
-	}
-	else{
-		loadtask(1);
-		$_SESSION["task"] = 1;
-	}
+			loadtask($_SESSION['task'],$error);
+		}
+		else{
+			loadtask(1);
+			$_SESSION["task"] = 1;
+		}
 	}
 	else {
-	loadfinish();
+		loadfinish();
 	}
 }
 else{
-
+	loadheader();
 	loadpage("userform");
 
 }
@@ -103,6 +108,6 @@ if($_GET["debug"] == "session"){var_dump($_SESSION);}
 //session_destroy();
 
 ?>
-</div>
-</body>
+		</div>
+	</body>
 </html>
