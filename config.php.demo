@@ -5,7 +5,7 @@
 $config = array();
 
 $config["name"] = "Erviker ARG";
-$config["tasks"] = 12;
+$config["tasks"] = 5;
 $config["hint"] = 2;
 
 $database = new medoo([
