@@ -80,6 +80,26 @@ function loadtask($id,$error){
 			loadpage("hintform");
 		}
 	}
+	elseif($task[$id]["type"] == "image"){
+		taskheadimage($id, $task[$id]["task"],$task[$id]["hint"],$error);
+		loadpage("taskform");
+		if($_SESSION["hint"][$id] != 1){
+			loadpage("hintform");
+		}
+	}
+}
+function taskheadimage($id,$task,$hint,$error){
+	echo "<div class=\"jumbotron\">";
+	echo "<h1>Oppgave ".$id."</h1>";
+	echo "<img src=task/image/$task></h2>";
+	if(isset($error)){
+		loadalert("danger",$error);
+	}
+
+	if($_SESSION["hint"][$id] == 1){
+	loadpanel("info","Hint",$hint);
+	}
+	echo "</div>";
 }
 function taskheadtext($id,$task,$hint,$error){
 	echo "<div class=\"jumbotron\">";
@@ -93,8 +113,6 @@ function taskheadtext($id,$task,$hint,$error){
 	loadpanel("info","Hint",$hint);
 	}
 	echo "</div>";
-//	$poeng = taskreward($id);
-//	echo "<h3>Poeng:".$poeng."</h3>";
 }
 
 function taskcheck($id,$svar){
