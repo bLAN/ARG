@@ -1,7 +1,4 @@
 <?php
-
-
-
 $userform = <<<END
 <form class="form-horizontal">
 <fieldset>
@@ -29,16 +26,8 @@ $taskform = <<<END
 <form class="form-horizontal" autocomplete="off">
 <fieldset>
 <div class="form-group">
-<label class="col-md-4 control-label" for="textinput"></label>
-<div class="col-md-6">
-<input id="svar" name="svar" type="text" placeholder="svar" class="form-control input-md" required="">
-</div>
-</div>
-<div class="form-group">
-<label class="col-md-4 control-label" for=""></label>
-<div class="col-md-4">
-<button id="" name="" class="btn btn-success">send</button>
-</div>
+<input id="svar" name="svar" type="text" placeholder="svar" class="col-md-8 form-control input-md" required="">
+<button id="" name="" class="btn btn-success pull-right col-md-4">send</button>
 </div>
 </fieldset>
 </form>
@@ -49,10 +38,7 @@ $hintform = <<<END
 <fieldset>
 <!-- Button -->
 <div class="form-group">
-<label class="col-md-4 control-label" for="singlebutton"></label>
-<div class="col-md-4">
-<button id="hint" name="hint" value="1" class="btn btn-danger">Hint</button>
-</div>
+<button id="hint" name="hint" value="1" class="btn btn-danger pull-right col-md-4">Hint</button
 </div>
 </fieldset>
 </form>
