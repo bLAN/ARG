@@ -1,3 +1,15 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="bootstrap/css/jumbotron-narrow.css">
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container">
 <?php
 session_start();
 include("function.php");
@@ -23,6 +35,14 @@ if ($_SESSION["user"] == NULL){
 	}
 }
 
+if(($_GET["hint"]) == 1){
+	$_SESSION["hint"][$_SESSION["task"]] = 1;
+	$hint = 1;
+}
+else{
+	$hint = 0;
+}
+
 if(isset($_GET["svar"])){
 	$id = $_SESSION["task"];
 	$svar = $_GET["svar"];
@@ -31,7 +51,7 @@ if(isset($_GET["svar"])){
 	if($id < $config["tasks"]){
 		if($check == TRUE){
 			$_SESSION["task"]++;
-			$_SESSION["poeng"] = $_SESSION["poeng"] + $poeng;
+			$_SESSION["poeng"] = pointcalc($_SESSION["poeng"], $poeng, $config["hint"], $hint);
 			$database->update("users",[
 				"task" => $_SESSION["task"],
 				"poeng" => $_SESSION["poeng"],
@@ -83,4 +103,6 @@ if($_GET["debug"] == "session"){var_dump($_SESSION);}
 //session_destroy();
 
 ?>
-
+</div>
+</body>
+</html>

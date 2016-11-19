@@ -24,21 +24,38 @@ function loadpage($p){
 		case "taskform":
 			echo $taskform;
 			break;
+		case "hintform":
+			echo $hintform;
+			break;
+		case "finish":
+			echo $finish;
+			break;
+
 		default:
 	endswitch;
 
 }
 function loadtask($id,$error){
 	include("task.php");
-	taskhead($id, $task[$id]["task"],$error);
+	taskhead($id, $task[$id]["task"],$task[$id]["hint"],$error);
 	loadpage("taskform");
+	if($_SESSION["hint"][$id] != 1){
+		loadpage("hintform");
+	}
 }
-function taskhead($id,$task,$error){
+function taskhead($id,$task,$hint,$error){
+	echo "<div class=\"jumbotron\">";
 	echo "<h1>Oppgave ".$id."</h1>";
 	echo "<h2>".$task."</h2>";
 	if(isset($error)){
-	echo "<h3>".$error."</h3>";
+		echo "<h3>".$error."</h3>";
 	}
+
+	if($_SESSION["hint"][$id] == 1){
+		print "<h3>Hint:</h3>";
+		print "<h4>".$hint."</h4>";
+	}
+	echo "</div>";
 //	$poeng = taskreward($id);
 //	echo "<h3>Poeng:".$poeng."</h3>";
 }
@@ -56,9 +73,19 @@ function taskreward($id){
 	return $task[$id]["poeng"];
 }
 
+function pointcalc($poeng,$value,$config,$hint){
+	if($hint = 1){
+	$r = $poeng + ($value/$config);
+	}
+	else{
+		$r = $poeng + $value;
+	}	
+	return $r;
+
+}
 
 function loadfinish(){
-echo "GRATULERER du kan no følge med vidare her :D";
+loadpage("finish");
 }
 
 
