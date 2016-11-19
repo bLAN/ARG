@@ -19,12 +19,13 @@ function loadheader($user, $poeng){
 	echo "<div class=\"header clearfix\">";
 	echo "<div class=\"nav nav-pills pull-right\">";
 	if($user){
-	echo "<p>Bruker:".$user." </p>";
-	echo "<p>Poeng:".$poeng." </p>";
+	echo "<p>Bruker: ".$user." </p>";
+	echo "<p>Poeng: ".$poeng." </p>";
 	}
 	echo "</div>";
-	echo "<h3 class=\"text-muted\">".$config["name"]."</h3>";
+	echo "<h3 >".$config["name"]."</h3>";
 	echo "</div>";
+
 }
 
 function loadpage($p){
@@ -55,6 +56,21 @@ function loadpanel($type,$head,$content){
 		}
 		print "</div>";
 }
+function loadalert($type,$head){
+		print "<div class=\"alert alert-".$type."\">" ;
+		print $head;
+		print "</div>";
+}
+
+function loadprogress($c,$m){
+	$p = ($c / $m) * 100;
+	print '<div class="progress">';
+	print ' <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="'.$p.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$p.'%">';
+	print '<span class="sr-only"> '.$p.'% Complete</span>';
+	print '</div>';
+	print '</div>';
+}
+
 function loadtask($id,$error){
 	include("task.php");
 	if($task[$id]["type"] == "text"){
@@ -95,7 +111,6 @@ function taskreward($id){
 }
 
 function pointcalc($poeng,$value,$config,$hint){
-	print $hint;
 	if($hint == 1){
 	$r = $poeng + ($value/$config);
 	}

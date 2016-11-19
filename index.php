@@ -10,12 +10,11 @@ include 'config.php';
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-superhero.css">
 		<link rel="stylesheet" href="bootstrap/css/jumbotron-narrow.css">
 		<script src="js/jquery-3.1.1.min.js"></script>
 		<script src="bootstrap/js/bootstrap.js"></script>
 		<title><?php echo $config["name"];?></title>
-		
 	</head>
 	<body>
 		<div class="container">
@@ -35,7 +34,7 @@ if ($_SESSION["user"] == NULL){
 				"poeng" => 0,
 			]);
 		}
-		else {loadpanel("danger","error","Brukernavet er opptatt");}
+		else {loadalert("danger","Brukernavet er opptatt");}
 	}
 }
 
@@ -80,6 +79,7 @@ if(isset($_GET["svar"])){
 
 if(isset($_SESSION['user'])){
 	loadheader($_SESSION["user"],$_SESSION["poeng"]);
+	loadprogress($_SESSION["task"], ($config["tasks"]) - 1);
 	if($id < $config["tasks"]){
 		if(isset($_SESSION['task'])){
 
@@ -102,10 +102,9 @@ else{
 if($_GET["debug"] == "restart"){session_destroy();}
 if($_GET["debug"] == "session"){var_dump($_SESSION);}
 //DEBUG//
-var_dump($_SESSION);
+//var_dump($_SESSION);
 //session_destroy();
-
-echo "<a href=\"?debug=restart\">restart</a>";
+//echo "<a href=\"?debug=restart\">restart</a>";
 ?>
 		</div>
 	</body>
