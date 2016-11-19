@@ -16,7 +16,7 @@ include("function.php");
 
 require_once 'medoo.php';
 include 'config.php';
-
+loadheader();
 
 
 if ($_SESSION["user"] == NULL){
@@ -31,7 +31,7 @@ if ($_SESSION["user"] == NULL){
 				"poeng" => 0,
 			]);
 		}
-		else {echo "brukernavn opptatt";}
+		else {loadpanel("danger","error","Brukernavet er opptatt");}
 	}
 }
 

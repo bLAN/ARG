@@ -14,6 +14,16 @@ function pagedecode($p) {
 	return $p;
 	}
 }
+function loadheader(){
+	echo "<div class=\"header clearfix\">";
+	echo "<ul class=\"nav nav-pills pull-right\">";
+	echo "<li role=\"presentation\"><p>Home</p></li>";
+	echo "<li role=\"presentation\"><p>Home</p></li>";
+	echo "<li role=\"presentation\"><p>Home</p></li>";
+	echo "</ul>";
+	echo "<h3 class=\"text-muted\">  Erviker ARG</h3>";
+	echo "</div>";
+}
 
 function loadpage($p){
 	include("page.php");
@@ -35,6 +45,14 @@ function loadpage($p){
 	endswitch;
 
 }
+function loadpanel($type,$head,$content){
+		print "<div class=\"panel panel-".$type."\">" ;
+		print "<div class=\"panel-heading\">".$head."</div>";
+		if($content){
+			print "<div class=\"panel-body\">".$content."</div>";
+		}
+		print "</div>";
+}
 function loadtask($id,$error){
 	include("task.php");
 	taskhead($id, $task[$id]["task"],$task[$id]["hint"],$error);
@@ -48,12 +66,11 @@ function taskhead($id,$task,$hint,$error){
 	echo "<h1>Oppgave ".$id."</h1>";
 	echo "<h2>".$task."</h2>";
 	if(isset($error)){
-		echo "<h3>".$error."</h3>";
+		loadpanel("danger",$error,"");
 	}
 
 	if($_SESSION["hint"][$id] == 1){
-		print "<h3>Hint:</h3>";
-		print "<h4>".$hint."</h4>";
+	loadpanel("info","Hint",$hint);
 	}
 	echo "</div>";
 //	$poeng = taskreward($id);
