@@ -87,6 +87,27 @@ function loadtask($id,$error){
 			loadpage("hintform");
 		}
 	}
+	elseif($task[$id]["type"] == "url"){
+		taskheadurl($id, $task[$id]["task"],$task[$id]["hint"],$error);
+		loadpage("taskform");
+		if($_SESSION["hint"][$id] != 1){
+			loadpage("hintform");
+		}
+	}
+}
+
+function taskheadurl($id,$task,$hint,$error){
+	echo "<div class=\"jumbotron\">";
+	echo "<h1>Oppgave ".$id."</h1>";
+	echo "<a href=$task>$task</a>";
+	if(isset($error)){
+		loadalert("danger",$error);
+	}
+
+	if($_SESSION["hint"][$id] == 1){
+	loadpanel("info","Hint",$hint);
+	}
+	echo "</div>";
 }
 function taskheadimage($id,$task,$hint,$error){
 	echo "<div class=\"jumbotron\">";
