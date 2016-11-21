@@ -49,7 +49,7 @@ if(isset($_GET["svar"])){
 	$svar = $_GET["svar"];
 	$check = taskcheck($id,$svar);
 	$poeng = taskreward($id);
-	if($id <= $config["tasks"]){
+	if($id < $config["tasks"]){
 		if($check == TRUE){
 			$hint = $_SESSION["hint"][$_SESSION["task"]];
 			$_SESSION["task"]++;
@@ -66,12 +66,12 @@ if(isset($_GET["svar"])){
 		$error = "FERDIG!";
 		if($database->has("finish",["user" => $_SESSION["user"]]) == false){
 			$hint = $_SESSION["hint"][$_SESSION["task"]];
+			$_SESSION["task"]++;
 			$_SESSION["poeng"] = pointcalc($_SESSION["poeng"], $poeng, $config["hint"], $hint);
 			$time = time();
 			$database->insert("finish",[
 				"user" => $_SESSION["user"],
 				"time" => $time,
-				//				"poeng" => $_SESSION["poeng"]
 			]);
 		}
 	}
