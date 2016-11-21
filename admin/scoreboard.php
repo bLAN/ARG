@@ -22,7 +22,9 @@ include "../function.php";
 
 <?php
 
-
+echo "<div class=\"jumbotron\">";
+echo "<h1> Score: </h1>";
+echo "</div>";
 
 ?>
 
