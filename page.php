@@ -1,4 +1,7 @@
 <?php
+
+
+
 $userform = <<<END
 <form class="form-horizontal">
 <fieldset>
@@ -11,8 +14,8 @@ $userform = <<<END
 </div>
 <!-- Button -->
 <div class="form-group">
-<label class="col-md-4 control-label" for="send"></label>
-<div class="col-md-4">
+<label class="col-md-6 control-label" for="send"></label>
+<div class="col-md-6">
 <button class="btn btn-primary">
 <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>
 GO!!</button>
@@ -56,7 +59,7 @@ END;
 $finish = <<<END
 
 <div class="jumbotron">
-<h1> KONGE!!</h1>
+<h1> KONGE</h1>
 <p class="lead">du er awsome</p>
 </div>
 
