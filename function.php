@@ -27,6 +27,19 @@ function loadheader($user, $poeng){
 	echo "</div>";
 
 }
+function loadheaderscore($users, $poeng){
+	include("config.php");
+	echo "<div class=\"header clearfix\">";
+	echo "<div class=\"nav nav-pills pull-right\">";
+	if($users){
+		echo "<span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"> ".$user."  </span>";
+		echo "<p><span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\"> ".$poeng."</span></p>";
+	}
+	echo "</div>";
+	echo "<h3 >".$config["name"]."</h3>";
+	echo "</div>";
+
+}
 
 function loadpage($p){
 	include("page.php");
@@ -151,6 +164,11 @@ function taskreward($id){
 	return $task[$id]["poeng"];
 }
 
+function loadfinish(){
+	loadpage("finish");
+}
+
+// kalkulasjonar
 function pointcalc($poeng,$value,$config,$hint){
 	if($hint == 1){
 		$r = $poeng + ($value/$config);
@@ -162,9 +180,6 @@ function pointcalc($poeng,$value,$config,$hint){
 
 }
 
-function loadfinish(){
-	loadpage("finish");
-}
 
 
 //sikkerhet

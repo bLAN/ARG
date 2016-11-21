@@ -22,7 +22,7 @@ include "../function.php";
 
 <?php
 
-loadheader();
+loadheaderscore("10","100");
 echo "<div class=\"jumbotron\">";
 echo "<h3> Top score </h3>";
 echo "</div>";
