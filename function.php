@@ -27,13 +27,12 @@ function loadheader($user, $poeng){
 	echo "</div>";
 
 }
-function loadheaderscore($users, $poeng){
+function loadheaderscore($users){
 	include("config.php");
 	echo "<div class=\"header clearfix\">";
 	echo "<div class=\"nav nav-pills pull-right\">";
 	if($users){
 		echo "<span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"> ".$users."  </span>";
-		echo "<p><span class=\"glyphicon glyphicon-stats\" aria-hidden=\"true\"> ".$poeng."</span></p>";
 	}
 	echo "</div>";
 	echo "<h3 >".$config["name"]."</h3>";
@@ -170,43 +169,46 @@ function loadfinish(){
 
 
 function loadscoreboard(){
-include "config.php";
-echo "<div class=\"jumbotron\">";
-echo "<h3> Top score </h3>";
-echo "<table class=\"table\">";
-echo "<thead>";
-echo "<tr>";
-echo "<th>Bruker</th>";
-echo "<th>Oppgave</th>";
-echo "<th>Poeng</th>";
-echo "</tr>";
-echo "</thead>";
-echo "<tbody>";
+	include "config.php";
+	echo "<div class=\"jumbotron\">";
+	echo "<h3> Top score </h3>";
+	echo "<table class=\"table\">";
+	echo "<thead>";
+	echo "<tr>";
+	echo "<th>Bruker</th>";
+	echo "<th>Oppgave</th>";
+	echo "<th>Poeng</th>";
+	echo "</tr>";
+	echo "</thead>";
+	echo "<tbody>";
 
-$query = "SELECT * FROM `users` ORDER BY `poeng` DESC";
-$datas = $database->query($query)->fetchAll();
+	$query = "SELECT * FROM `users` ORDER BY `poeng` DESC";
+	$datas = $database->query($query)->fetchAll();
 
-//var_dump($datas);
+	//var_dump($datas);
 
-foreach($datas as $data)
-{
-	if($database->has("finish",["user" => $data["Name"]]) == TRUE){
-		echo "<tr class=\"success\">";
-		echo "<td>".$data["Name"]." </td><td> FERDIG!</td><td>". $data["poeng"]."</td>";	
-		echo "</tt>";
+	foreach($datas as $data)
+	{
+		if($database->has("finish",["user" => $data["Name"]]) == TRUE){
+			echo "<tr class=\"success\">";
+			echo "<td>".$data["Name"]." </td><td> FERDIG!</td><td>". $data["poeng"]."</td>";
+			echo "</tt>";
+		}
+		else{
+			echo "<tr>";
+			echo "<td>".$data["Name"]." </td><td>".$data["task"]." </td><td>". $data["poeng"]."</td>";
+			echo "</tt>";
+		}
 	}
-	else{
-		echo "<tr>";
-		echo "<td>".$data["Name"]." </td><td>".$data["task"]." </td><td>". $data["poeng"]."</td>";	
-		echo "</tt>";
-	}
+	echo "</tbody>";
+	echo "</table>";
+	echo "</div>";
 }
-echo "</tbody>";
-echo "</table>";
 
-echo "</div>";
-
-
+function topcounter(){
+	include "config.php";
+	$count = $database->count("users");
+	return $count;
 }
 
 

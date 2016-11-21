@@ -22,8 +22,9 @@ include "../function.php";
 
 <?php
 
-loadheaderscore("10","100");
+loadheaderscore(topcounter());
 loadscoreboard();
+topcounter();
 
 ?>
 
