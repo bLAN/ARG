@@ -11,10 +11,10 @@ include "../function.php";
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-superhero.css">
-        <link rel="stylesheet" href="bootstrap/css/jumbotron-narrow.css">
-        <script src="js/jquery-3.1.1.min.js"></script>
-        <script src="bootstrap/js/bootstrap.js"></script>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-superhero.css">
+        <link rel="stylesheet" href="../bootstrap/css/jumbotron-narrow.css">
+        <script src="../js/jquery-3.1.1.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.js"></script>
         <title><?php echo $config["name"];?></title>
     </head>
     <body>
@@ -22,8 +22,9 @@ include "../function.php";
 
 <?php
 
+loadheader();
 echo "<div class=\"jumbotron\">";
-echo "<h1> Score: </h1>";
+echo "<h3> Top score </h3>";
 echo "</div>";
 
 ?>
