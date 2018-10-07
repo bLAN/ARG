@@ -220,7 +220,7 @@ function loadsvarboard(){
 	echo "</thead>";
 	echo "<tbody>";
 
-	$query = "SELECT * FROM `svar` ORDER BY `id` DESC LIMIT 20";
+	$query = "SELECT * FROM `svar` ORDER BY `id` DESC LIMIT 18";
 	$datas = $database->query($query)->fetchAll();
 
 	//var_dump($datas);
