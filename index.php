@@ -48,6 +48,12 @@ if(isset($_GET["svar"])){
 	$id = $_SESSION["task"];
 	$svar = $_GET["svar"];
 	$check = taskcheck($id,$svar);
+	$database->insert('svar',[
+		"svar" => $svar,
+		"user" => $_SESSION["user"],
+		"task" => $_SESSION["task"],
+		"type" => $check,
+	]);
 	$poeng = taskreward($id);
 	if($id < $config["tasks"]){
 		if($check == TRUE){

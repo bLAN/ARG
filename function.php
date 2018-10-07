@@ -205,6 +205,37 @@ function loadscoreboard(){
 	echo "</div>";
 }
 
+
+function loadsvarboard(){
+	include "config.php";
+	echo "<div class=\"jumbotron\">";
+	echo "<h3> Siste svar </h3>";
+	echo "<table class=\"table\">";
+	echo "<thead>";
+	echo "<tr>";
+	echo "<th>Bruker</th>";
+	echo "<th>Oppgave</th>";
+	echo "<th>Svar</th>";
+	echo "</tr>";
+	echo "</thead>";
+	echo "<tbody>";
+
+	$query = "SELECT * FROM `svar` ORDER BY `id` DESC LIMIT 20";
+	$datas = $database->query($query)->fetchAll();
+
+	//var_dump($datas);
+
+	foreach($datas as $data)
+	{
+			echo "<tr>";
+			echo "<td>".$data["user"]." </td><td>".$data["task"]." </td><td>". $data["svar"]."</td>";
+			echo "</tt>";
+	}
+	echo "</tbody>";
+	echo "</table>";
+	echo "</div>";
+}
+
 function topcounter(){
 	include "config.php";
 	$count = $database->count("users");
