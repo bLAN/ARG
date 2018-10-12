@@ -19,7 +19,7 @@ include "../function.php";
 		<title><?php echo $config["name"];?></title>
 		<script>
 $(function(){
-   setInterval(function(){$("#svar").load("svar.php")},5);
+   setInterval(function(){$("#svar").load("svar.php")},5000);
 })
 		</script>
     </head>
